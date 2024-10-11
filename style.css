@@ -1,0 +1,34 @@
+.Title{
+    font-weight: 700;
+    font-family: cursive;
+    text-align: center;
+    color: rgb(139, 136, 132);
+    font-size: 30px;
+
+}
+
+body{
+    background-color: mintcream;
+}
+
+body .link{
+    font-family: serif;
+    color: red;
+    font-size: 14px;
+}
+
+.box{
+    width: 500px;
+    height: auto;
+    border: 3px dotted black;
+    margin-bottom: 5px ;
+    background-color: rgb(46, 175, 214);
+}
+
+.box .bee{
+    background-color: rgb(230, 142, 28);
+}
+
+.box.dog{
+    background-color: rgb(215, 228, 35);
+}

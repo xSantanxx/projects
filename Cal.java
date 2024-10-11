@@ -1,15 +1,9 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package com.mycompany.macoscal;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-/**
- *
- * @author dmitripower
- */
+
 public class Cal extends JFrame implements ActionListener{
     
     JFrame frame;
@@ -26,7 +20,7 @@ public class Cal extends JFrame implements ActionListener{
     char operator;
     
     
-    Cal(){
+    Cal(){ //Main frame
         frame = new JFrame("MacOS Calculator");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(null);
@@ -55,7 +49,7 @@ public class Cal extends JFrame implements ActionListener{
             
         });
        
-        
+        //Buttons
         textfield.setEditable(false);
         
         addButton = new JButton("+");
@@ -77,6 +71,8 @@ public class Cal extends JFrame implements ActionListener{
         functionButtons[6] = perButton;
         functionButtons[7] = clrButton;
          functionButtons[8] = negButton;
+
+        //Giving buttons functions and setting their colors
 
         for(int i = 0; i < 9;i++){
             functionButtons[i].addActionListener(this);
@@ -132,7 +128,7 @@ public class Cal extends JFrame implements ActionListener{
         
         
         
-        //numberButtons[9].setPreferredSize(new Dimension(100,250));
+        
         negButton.setBounds(50,430,100,50);
         perButton.setBounds(150,430,150,50);
         clrButton.setBounds(250,430,100,50);
@@ -143,16 +139,12 @@ public class Cal extends JFrame implements ActionListener{
         panel.setLayout(new GridLayout(5,4,1,1));
         panel.setBackground(new Color(211, 211, 211));
         panel.setOpaque(true);
-        //panel.setVisible(true);
+       
         panel.setBackground(Color.BLACK);
         
         
         
-        //frame.add(clrButton);
-        //frame.add(perButton);
-        //frame.add(negButton);
-        //panel.add(clrButton);
-        //panel.add(perButton);
+        
         panel.add(clrButton);
         panel.add(perButton);
         panel.add(negButton);
@@ -189,11 +181,12 @@ public class Cal extends JFrame implements ActionListener{
         
         frame.setVisible(true);
     }
-    
+    //Call the function
     public static void main(String[] args){
         Cal calc = new Cal();
     }
-
+    
+    //How the calculations are executed
     @Override
     public void actionPerformed(ActionEvent e) {
         //String command = e.getActionCommand();
@@ -246,7 +239,7 @@ public class Cal extends JFrame implements ActionListener{
             temp*=-1;
             textfield.setText(String.valueOf(temp));
         }
-        
+        //Deciding what to do when an operator is called
         if(e.getSource() == equButton){
         num2 = Double.parseDouble(textfield.getText());
         switch(operator){
@@ -266,16 +259,17 @@ public class Cal extends JFrame implements ActionListener{
             result = num1 * (num1 / 100);
             break;
         }
-        
+        //Output the result and set up for more calculations
         textfield.setText(String.valueOf(result));
         num1 = result;
-        
+        //Clear everything
         }
         if(e.getSource()==clrButton){
             textfield.setText("");
         }
+
         
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        throw new UnsupportedOperationException("Not supported yet."); 
     }
     
     

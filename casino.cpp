@@ -47,7 +47,7 @@ int main()
                 cout << "Here's how much you have remaining: " << money << endl;
                 return 0;
             }
-            else if (j == 9 && k == 1 && l == 7) // Easter Egg looool
+            else if (j == 3 && k == 9 && l == 4) // Easter Egg looool
             {
                 cout << "Ding Ding, You won!" << endl;
                 money = money * 500;

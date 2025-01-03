@@ -1,0 +1,216 @@
+#include <iostream>
+#include <chrono>
+#include <thread>
+#include <string>
+#include <vector>
+#include <sstream>
+
+void alarmClock();
+void alarmSec(std::string value);
+void alarmMin(std::string value);
+void alarmHour(std::string value);
+
+
+int main(){
+    std::string answer;
+
+    std::cout << "Would you like to use the alarm clock " << std::endl;
+    std::cin >> answer;
+
+    if(answer=="yes"){
+        alarmClock();
+    }
+    else{
+        std::cout << "Alri" << std::endl;
+    }
+}
+
+//change to string
+//seperate each piece by : then calculate
+
+void alarmClock(){
+    //bool active = true;
+    std::string answer;
+
+    std::cout << "Set an alarm time: " << std::endl;
+    std::cin >> answer;
+
+    std::cout << "Is this seconds[0], minutes[1], hours[2]: " << std::endl;
+    int deci;
+    std::cin >> deci;
+
+    switch (deci)
+    {
+    case 0:
+        alarmSec(answer);
+        break;
+
+    case 1:
+        alarmMin(answer);
+        break;
+
+    case 2:
+        alarmHour(answer);
+        break;
+    
+    default:
+        break;
+    }
+
+        /*
+
+        int seconds = answer * 60;
+
+        int i = 0;
+
+        while(i <= seconds){
+            
+            std::cout << "Time remaining " << i << std::endl;
+
+            std::this_thread::sleep_for(std::chrono::seconds(1));
+
+            i++;
+        }
+
+        std::string input;
+        std::cout << "Alarm is over " << "\n" << " Again?" << std::endl;
+        std::cin >> input;
+
+        if(input == "no")
+            
+
+        */
+    
+}
+
+
+void alarmSec(std::string value){
+
+    std::istringstream stream(value);//test name
+    std::string segment;//test name
+    std::vector<std::string> seglist;
+
+    while(std::getline(stream,segment,':')){
+        seglist.push_back(segment);
+    }
+
+    int total = 0;
+
+    for(int i = 0; i < seglist.size(); i++){
+        total += std::stoi(seglist.at(i));
+    }
+
+    /*
+    for(auto i: seglist){
+        std::cout << i << " ";
+    }
+    */
+
+    //std::cout << "Int " << total << std::endl;
+    
+    int i = total;
+    while(i >= 0){
+
+        system("clear");
+
+        std::cout << "Time remainding " << i << std::endl;
+
+        std::this_thread::sleep_for(std::chrono::seconds(1));
+
+        i--;
+    }
+
+    std::cout << "Alarm is over" << std::endl;
+}
+
+void alarmMin(std::string value){
+
+    std::istringstream stream(value);//test name
+    std::string segment;//test name
+    std::vector<std::string> seglist;
+
+    while(std::getline(stream,segment,':')){
+        seglist.push_back(segment);
+    }
+
+    for(auto i: seglist){
+        std::cout << i << " ";
+    }
+
+    int total = 0;
+
+    for(int i = 0; i < seglist.size(); i++){
+        if(i == 0)
+            total += (std::stoi(seglist.at(i)) * 60);
+        else
+            total += (std::stoi(seglist.at(i)));
+    }
+
+    
+
+    //std::cout << "Int " << total << std::endl;
+
+    //total-=1;
+
+
+    int i = total;
+    //int i = 0;
+    while(i >= 0){
+
+        system("clear");
+
+        std::cout << "Time remainding " << i << std::endl;
+
+        std::this_thread::sleep_for(std::chrono::seconds(1));
+
+        i--;
+    }
+
+    std::cout << "Alarm is over" << std::endl;
+
+}
+
+void alarmHour(std::string value){
+
+    std::istringstream stream(value);//test name
+    std::string segment;//test name
+    std::vector<std::string> seglist;
+
+    while(std::getline(stream,segment,':')){
+        seglist.push_back(segment);
+    }
+
+    for(auto i: seglist){
+        std::cout << i << " ";
+    }
+
+    int total = 0;
+
+    for(int i = 0; i < seglist.size(); i++){
+        if(i == 0)
+            total += (std::stoi(seglist.at(i)) * 3600);
+        else if(i == 1)
+            total += (std::stoi(seglist.at(i)) * 60);
+        else
+            total += (std::stoi(seglist.at(i)));
+    }
+
+    //total-=1;
+
+    //std::cout << "Int " << total << std::endl;
+    //int i = value * 3600;
+    int i = total;
+    while(i >= 0){
+
+        system("clear");
+
+        std::cout << "Time remainding " << i << std::endl;
+
+        std::this_thread::sleep_for(std::chrono::seconds(1));
+
+        i--;
+    }
+
+    std::cout << "Alarm is over" << std::endl;
+
+}
